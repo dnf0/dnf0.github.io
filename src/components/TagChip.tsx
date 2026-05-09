@@ -4,9 +4,10 @@ interface TagChipProps {
   tag: string;
   active?: boolean;
   onClick?: (tag: string) => void;
+  section?: "blog" | "projects";
 }
 
-export default function TagChip({ tag, active, onClick }: TagChipProps) {
+export default function TagChip({ tag, active, onClick, section = "blog" }: TagChipProps) {
   const base =
     "inline-block text-xs px-2 py-0.5 rounded-sm transition-colors";
   const activeClass = active
@@ -22,7 +23,7 @@ export default function TagChip({ tag, active, onClick }: TagChipProps) {
   }
 
   return (
-    <Link href={`/blog?tag=${tag}`} className={`${base} ${activeClass}`}>
+    <Link href={`/${section}?tag=${tag}`} className={`${base} ${activeClass}`}>
       {tag}
     </Link>
   );

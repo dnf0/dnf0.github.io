@@ -1,6 +1,6 @@
+import { Suspense } from "react";
 import { getAllPosts, getAllTags } from "@/lib/posts";
-import PostCard from "@/components/PostCard";
-import TagChip from "@/components/TagChip";
+import FilterablePostList from "@/components/FilterablePostList";
 
 export default function ProjectsIndex() {
   const projects = getAllPosts("projects");
@@ -13,23 +13,14 @@ export default function ProjectsIndex() {
         Project case studies and in-depth technical walkthroughs.
       </p>
 
-      {tags.length > 0 && (
-        <div className="flex gap-2 flex-wrap mb-8">
-          {tags.map((tag) => (
-            <TagChip key={tag} tag={tag} />
-          ))}
-        </div>
-      )}
-
-      {projects.length === 0 ? (
-        <p className="text-topo-muted">No projects posted yet.</p>
-      ) : (
-        <div className="flex flex-col gap-4">
-          {projects.map((p) => (
-            <PostCard key={p.slug} post={p} href={`/projects/${p.slug}`} />
-          ))}
-        </div>
-      )}
+      <Suspense fallback={<div className="text-topo-muted">Loading...</div>}>
+        <FilterablePostList
+          posts={projects}
+          tags={tags}
+          emptyMessage="No projects posted yet."
+          section="projects"
+        />
+      </Suspense>
     </div>
   );
 }

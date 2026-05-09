@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import type { ComponentType } from "react";
+import rehypePrettyCode from "rehype-pretty-code";
 import type { Post, PostFrontmatter, ContentType } from "./types";
 
 const contentRoot = path.join(process.cwd(), "content");
@@ -67,7 +68,12 @@ export async function compilePost(
   const raw = fs.readFileSync(filePath, "utf-8");
   return compileMDX<PostFrontmatter>({
     source: raw,
-    options: { parseFrontmatter: true },
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        rehypePlugins: [[rehypePrettyCode, { theme: "github-dark-dimmed" }]],
+      },
+    },
     components,
   });
 }

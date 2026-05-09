@@ -6,9 +6,10 @@ import TagChip from "./TagChip";
 interface PostCardProps {
   post: Post;
   href: string;
+  section?: "blog" | "projects";
 }
 
-export default function PostCard({ post, href }: PostCardProps) {
+export default function PostCard({ post, href, section = "blog" }: PostCardProps) {
   const { frontmatter } = post;
   return (
     <Link href={href} className="block group">
@@ -27,7 +28,7 @@ export default function PostCard({ post, href }: PostCardProps) {
           </time>
           <div className="flex gap-1.5 flex-wrap">
             {frontmatter.tags.map((tag) => (
-              <TagChip key={tag} tag={tag} />
+              <TagChip key={tag} tag={tag} section={section} />
             ))}
           </div>
         </div>

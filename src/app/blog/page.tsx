@@ -1,6 +1,6 @@
+import { Suspense } from "react";
 import { getAllPosts, getAllTags } from "@/lib/posts";
-import PostCard from "@/components/PostCard";
-import TagChip from "@/components/TagChip";
+import FilterablePostList from "@/components/FilterablePostList";
 
 export default function BlogIndex() {
   const posts = getAllPosts("blog");
@@ -13,23 +13,14 @@ export default function BlogIndex() {
         Thoughts on data engineering, geospatial analytics, and pipelines.
       </p>
 
-      {tags.length > 0 && (
-        <div className="flex gap-2 flex-wrap mb-8">
-          {tags.map((tag) => (
-            <TagChip key={tag} tag={tag} />
-          ))}
-        </div>
-      )}
-
-      {posts.length === 0 ? (
-        <p className="text-topo-muted">No posts yet. Check back soon.</p>
-      ) : (
-        <div className="flex flex-col gap-4">
-          {posts.map((post) => (
-            <PostCard key={post.slug} post={post} href={`/blog/${post.slug}`} />
-          ))}
-        </div>
-      )}
+      <Suspense fallback={<div className="text-topo-muted">Loading...</div>}>
+        <FilterablePostList
+          posts={posts}
+          tags={tags}
+          emptyMessage="No posts yet. Check back soon."
+          section="blog"
+        />
+      </Suspense>
     </div>
   );
 }

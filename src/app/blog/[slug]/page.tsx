@@ -10,8 +10,10 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export function generateStaticParams() {
-  return getPostSlugs("blog").map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const slugs = getPostSlugs("blog");
+  if (slugs.length === 0) return [{ slug: "placeholder" }];
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
