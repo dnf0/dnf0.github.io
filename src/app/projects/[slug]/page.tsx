@@ -10,8 +10,13 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
-  return getPostSlugs("projects").map((slug) => ({ slug }));
+export function generateStaticParams() {
+  const slugs = getPostSlugs("projects");
+  // Next.js + output:export requires at least one generated path
+  if (slugs.length === 0) {
+    return [{ slug: "placeholder" }];
+  }
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
