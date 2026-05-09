@@ -1,5 +1,8 @@
 import { getPostSlugs, getPostBySlug, compilePost } from "@/lib/posts";
 import TagChip from "@/components/TagChip";
+import Callout from "@/components/Callout";
+import CodeBlock from "@/components/CodeBlock";
+import MapEmbed from "@/components/MapEmbed";
 import { format, parseISO } from "date-fns";
 import type { Metadata } from "next";
 
@@ -33,7 +36,11 @@ export default async function ProjectPage({ params }: Props) {
     );
   }
 
-  const { content } = await compilePost("projects", slug);
+  const { content } = await compilePost("projects", slug, {
+    Callout,
+    CodeBlock,
+    MapEmbed,
+  });
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">
