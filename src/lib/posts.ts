@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
+import type { ComponentType } from "react";
 import type { Post, PostFrontmatter, ContentType } from "./types";
 
 const contentRoot = path.join(process.cwd(), "content");
@@ -9,7 +10,8 @@ const contentRoot = path.join(process.cwd(), "content");
 function readDir(dir: string): string[] {
   try {
     return fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"));
-  } catch {
+  } catch (err: any) {
+    if (err?.code !== "ENOENT") console.warn(`Error reading ${dir}:`, err);
     return [];
   }
 }
@@ -57,10 +59,11 @@ export function getPostBySlug(type: ContentType, slug: string): Post | null {
 export async function compilePost(
   type: ContentType,
   slug: string,
-  components: Record<string, React.ComponentType<any>> = {}
+  components: Record<string, ComponentType<any>> = {}
 ) {
   const dir = path.join(contentRoot, type);
   const filePath = path.join(dir, `${slug}.mdx`);
+  if (!fs.existsSync(filePath)) throw new Error(`Post not found: ${type}/${slug}`);
   const raw = fs.readFileSync(filePath, "utf-8");
   return compileMDX<PostFrontmatter>({
     source: raw,
@@ -72,6 +75,6 @@ export async function compilePost(
 export function getAllTags(type: ContentType): string[] {
   const posts = getAllPosts(type);
   const tagSet = new Set<string>();
-  posts.forEach((p) => p.frontmatter.tags.forEach((t) => tagSet.add(t)));
+  posts.forEach((p) => p.frontmatter.tags?.forEach((t) => tagSet.add(t)));
   return Array.from(tagSet).sort();
 }
