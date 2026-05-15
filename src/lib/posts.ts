@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import type { ComponentType } from "react";
 import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 import type { Post, PostFrontmatter, ContentType } from "./types";
 
 const contentRoot = path.join(process.cwd(), "content");
@@ -71,6 +72,7 @@ export async function compilePost(
     options: {
       parseFrontmatter: true,
       mdxOptions: {
+        remarkPlugins: [remarkGfm],
         rehypePlugins: [[rehypePrettyCode, { theme: "github-dark-dimmed" }]],
       },
     },
