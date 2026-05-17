@@ -1,0 +1,166 @@
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{paracol}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{microtype}
+
+% Colors
+\definecolor{primary}{RGB}{44, 62, 80} % Deep Slate Blue
+\definecolor{secondary}{RGB}{52, 73, 94}
+\definecolor{accent}{RGB}{41, 128, 185}
+\definecolor{textlight}{RGB}{100, 100, 100}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    filecolor=accent,      
+    urlcolor=accent,
+    pdftitle={Daniel Fisher - CV},
+}
+
+% Section formatting
+\titleformat{\section}
+  {\Large\bfseries\color{primary}}
+  {}{0em}
+  {}[\titlerule]
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{secondary}}
+  {}{0em}
+  {}
+\titlespacing*{\subsection}{0pt}{1.5ex}{0.5ex}
+
+% Custom commands
+\newcommand{\cvitem}[2]{\textbf{#1} \hspace*{\fill} {\small\color{textlight}#2}\\}
+\newcommand{\cvsubitem}[1]{{\small\color{textlight}#1}\\}
+\newcommand{\skillgroup}[2]{\textbf{#1}\par\vspace{0.2em}#2\par\vspace{0.8em}}
+
+% List formatting
+\setlist[itemize]{leftmargin=*, itemsep=0.2em, topsep=0.2em}
+
+\begin{document}
+\pagestyle{empty}
+
+% Header
+\begin{flushleft}
+    {\Huge \bfseries \color{primary} Daniel Fisher} \\[0.5em]
+    {\large \color{secondary} Senior Data Engineer}
+\end{flushleft}
+\vspace{1em}
+
+\columnratio{0.35}
+\begin{paracol}{2}
+
+% ================= LEFT COLUMN =================
+\begin{leftcolumn}
+\raggedright
+
+\section*{Contact}
+\faMapMarker \hspace{0.5em} London, UK \\
+\faEnvelope \hspace{0.5em} \href{mailto:danielfisher0@gmail.com}{danielfisher0@gmail.com} \\
+\faGlobe \hspace{0.5em} \href{https://dnf0.github.io/}{dnf0.github.io} \\
+\faGithub \hspace{0.5em} \href{https://github.com/dnf0}{github.com/dnf0} \\
+\faLinkedin \hspace{0.5em} \href{https://linkedin.com/in/daniel-fisher-55703271}{daniel-fisher}
+
+\section*{Education}
+\cvitem{PhD Remote Sensing}{2009 -- 2014}
+\cvsubitem{University College London}
+\vspace{0.5em}
+
+\cvitem{MSc Remote Sensing}{2008 -- 2009}
+\cvsubitem{University College London}
+\vspace{0.5em}
+
+\cvitem{BSc Geography}{2003 -- 2006}
+\cvsubitem{University College London}
+
+\section*{Certifications}
+\cvitem{AWS Certified Cloud Practitioner}{2023}
+\vspace{0.5em}
+
+\cvitem{S2DS London 2016}{Sep 2016}
+\cvsubitem{Pivigo}
+\cvsubitem{ID: Accredible-10278261}
+
+\end{leftcolumn}
+
+% ================= RIGHT COLUMN =================
+\begin{rightcolumn}
+\raggedright
+
+\section*{Profile Summary}
+Senior Data Engineer with extensive experience in building high-performance, large-scale data infrastructure and serverless pipelines. A power-user of AI coding agents, with >80\% of committed code generated via AI-assisted workflows (e.g., Cursor, Gemini CLI). Proven track record of processing Petabyte-scale datasets and optimising complex transformations using Python and Rust. Adept at developing agentic platforms for model risk management and implementing robust ETL pipelines. Strong background in geospatial analytics and remote sensing, translating domain-specific metrics into universally understood data engineering solutions.
+
+\section*{Skills \& Abilities}
+\skillgroup{Languages}{Python, Rust}
+\skillgroup{Data \& Cloud}{AWS (Batch, Step Functions, Lambda, S3), Ray, Zarr v3, Parquet, Serverless Pipelines, High-Performance Pipelines}
+\skillgroup{Geospatial}{Remote Sensing, Image Processing, Geospatial Analytics, STAC, Overpass API, Datashader}
+\skillgroup{AI/ML}{PyTorch, LangChain, LangGraph, Agentic Platforms, Computer Vision, GANs, Boosting, Auto-ML}
+\skillgroup{Domain Knowledge}{Fire Radiative Power (FRP), Gas Flare Radiative Energy, Smoke Plume Dynamics, Satellite Sensors (Himawari-8, Meteosat, ATSR-1/2, AATSR, SLSTR, CALIPSO, MISR, SEVIRI)}
+
+\end{rightcolumn}
+\end{paracol}
+
+\vspace{1em}
+
+% ================= FULL WIDTH SECTION =================
+\section*{Professional Experience}
+
+\subsection*{Climate X}
+\cvitem{Senior Data Engineer}{Jul 2024 -- Present}
+\begin{itemize}
+    \item \textbf{Scalable Pipeline Development:} Architected the next-generation data provisioning engine, a highly parallel, serverless pipeline using AWS Batch Array Jobs to convert raw climate data into optimised Zarr v3 multi-scale arrays. Previously scaled the legacy Ray orchestration engine across massive distributed workloads.
+    \item \textbf{High-Performance Processing:} Optimised massive data transformations using high-performance Python tooling backed by Rust binaries, implementing zero-copy inplace array mutation and streaming Zarr validation to process Petabyte-scale datasets and eliminate out-of-memory crashes.
+    \item \textbf{ML Model Monitoring \& Evaluation:} Built an agentic platform for Model Risk Management using LangChain/LangGraph to ingest evidence, run compliance checks, and automate gap reports for model behaviour.
+    \item \textbf{AI Tooling \& Internal Adoption:} Built internal CLI tools that automatically inject standardised system prompts, verification checklists, and autonomous skills into repositories to constrain LLM behaviour and enforce safety.
+    \item \textbf{Data Integration for Safety:} Engineered complex ingestion connectors pulling unstructured context from across the organisation to ground LLM evaluations.
+    \item \textbf{Self-Service Tooling:} Built a complete, self-service QC orchestration engine via Slackbot integration, enabling non-engineers to trigger massive, distributed QC runs directly from chat and generate high-resolution Datashader plots.
+    \item \textbf{Data Quality \& Telemetry:} Integrated real-time error tracking and telemetry across spatial pipelines, building intelligent out-of-core pipeline safety limits for resilience.
+\end{itemize}
+
+\subsection*{NatCen (National Centre for Social Research)}
+\cvitem{Associate (Freelance)}{Apr 2024 -- Present}
+\begin{itemize}
+    \item \textbf{Classification Software:} Contributed classification software for NatCen's "Dividing Lines" voter classification, used in the BBC's "Undercover Voters" coverage.
+    \item \textbf{National Enrichment Pipeline:} Built a national enrichment pipeline at the LSOA level combining OSM infrastructure features with STAC satellite data, NASA DEMs, and ESA WorldCover land cover.
+    \item \textbf{Geospatial ETL:} Implemented robust ETL pipelines with Overpass API query generation, retries/backoff, endpoint failover, caching, and resumable partial outputs, delivering national outputs for 35,672 LSOAs.
+\end{itemize}
+
+\subsection*{SatVu}
+\cvitem{Geospatial Engineer}{Feb 2022 -- Jul 2024}
+\begin{itemize}
+    \item \textbf{Serverless Image-Processing:} Designed and shipped composable serverless image-processing pipelines; automated deployments via CI/CD.
+    \item \textbf{Event-Driven Workflows:} Deployed event-driven APIs/workflows using Amazon S3 triggers orchestrated by AWS Step Functions and executed with AWS Lambda.
+    \item \textbf{Computer Vision \& ML:} Applied ML/computer vision in PyTorch, including GAN-based cloud segmentation (improved IoU from 0.4 to 0.6) and D2-Net image registration (improving alignment from 100m+ to $\sim$15m vs raw satellite metadata).
+\end{itemize}
+
+\subsection*{King's College London / NCEO}
+\cvitem{Research Associate}{Jun 2014 -- Feb 2022}
+\begin{itemize}
+    \item \textbf{Large-Scale EO Pipelines:} Built large-scale Earth Observation processing pipelines ($>$100TB / $\sim$800k images) for long-horizon monitoring applications.
+    \item \textbf{LSA SAF:} Developed algorithms and product contents for Meteosat Fire Radiative Power (FRP) products used in Copernicus Atmosphere Monitoring Service (CAMS).
+    \item \textbf{Global Gas Flaring Inventory:} Conducted multi-decade global inventories of gas flaring using ATSR and SLSTR satellite records.
+\end{itemize}
+
+\section*{Selected Publications}
+\begin{itemize}
+    \item \href{https://doi.org/10.1016/j.rse.2019.111298}{\textit{Multi-decade global gas flaring change inventoried using the ATSR-1, ATSR-2, AATSR and SLSTR data records}} (2019).
+    \item \href{https://doi.org/10.3390/rs10020305}{\textit{Shortwave IR adaption of the mid-infrared radiance method of FRP retrieval for assessing industrial gas flaring output}} (2018).
+    \item \href{https://doi.org/10.1016/j.rse.2017.02.024}{\textit{Major advances in geostationary fire radiative power (FRP) retrieval over Asia and Australia stemming from use of Himawari-8 AHI}} (2017).
+    \item \href{https://doi.org/10.1109/TGRS.2013.2249071}{\textit{Automated stereo retrieval of smoke plume injection heights... from AATSR}} (2014).
+\end{itemize}
+\vspace{0.5em}
+\noindent \textit{For a full list of publications, please visit \href{https://scholar.google.co.uk/citations?user=P_dL0zcAAAAJ&hl=en}{my Google Scholar profile}.}
+
+\end{document}
