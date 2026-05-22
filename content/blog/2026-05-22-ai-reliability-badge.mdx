@@ -1,0 +1,103 @@
+---
+title: "Code Coverage is 'Dead': Pinning an AI Reliability Badge on Your README"
+date: "2026-05-22"
+tags: [ai-engineering, github-actions, ci-cd, reliability]
+description: "How to dynamically track and expose automated AI reviewer performance against a golden set using a GitHub Actions badge."
+---
+
+*4 min read • Tags: `ai-engineering`, `github-actions`, `ci-cd`, `reliability`*
+
+<Callout type="info">
+**TL;DR:** Traditional code coverage is insufficient for evaluating the quality of non-deterministic AI features. By integrating an automated AI reviewer that runs against a set of "golden assessments", teams can automatically block PRs that degrade AI performance. I expose this real-time reliability score directly on the repository README using a dynamic GitHub Actions badge.
+</Callout>
+
+The shift from deterministic procedural code to probabilistic AI necessitates a fundamental change in how one thinks about continuous integration. Historically, test suites relied on absolute binary assertions: a method either returned the correct string, or the test failed. But when dealing with LLMs and automated AI reviewer systems, responses are inherently non-deterministic. Trying to evaluate these systems by looking at traditional static code coverage metrics gives you a false sense of security that completely misses the actual quality of the output [1]. It tells you that the LLM API was called, not that the response was accurate or useful.
+
+To address this, I have moved away from standard coverage percentage metrics in favour of evaluating the agent against a curated set of "golden assessments". Think of these as a rigorous matrix of known prompts paired with human-verified optimal outcomes. 
+
+My golden set is broken down into specific competency tiers:
+- **Omission Detection:** Can the agent reliably spot when mandatory error handling or logging is missing from a new function?
+- **Style Alignment:** Does the agent correctly flag deviations from my internal naming conventions without being overly pedantic?
+- **Security Posture:** Does it successfully identify hardcoded secrets or SQL injection vectors in obfuscated test payloads?
+
+When a developer submits a pull request, the automated AI reviewer runs its logic against this golden set. If the system catches the agent degrading—like dropping key entities or failing to spot obvious anti-patterns it previously caught—the CI pipeline rejects the changes. This works because it treats the LLM like an engineer taking a certification exam: I don't care *how* it arrived at the answer (i.e., the executed code paths), only that the semantic output remains consistently correct across hundreds of known scenarios.
+
+## What Does the AI Reviewer Actually Do?
+
+Before diving into how it is measured, it helps to understand what the automated AI reviewer is. I built an orchestrator that listens for new pull requests across my repositories. When a developer opens a PR, this system fetches the code diffs and feeds them into an LLM. The agent's job is to act as a senior engineer: it scans the changes for architectural anti-patterns, flags security vulnerabilities, checks alignment with internal style guides, and posts actionable feedback directly as PR comments. 
+
+Because the agent is making subjective judgments on complex code, its output isn't a simple pass/fail. It might give great feedback on one PR but hallucinate on another. That's why I need a robust way to constantly assess its core competency.
+
+## Swapping Coverage for Outcome Verification
+
+I am basically comparing two distinct paradigms for keeping a codebase healthy. The old-school approach is static code coverage, which mathematically checks which lines of code were actually executed during testing. Sure, it stops catastrophic syntax errors, but it's blind to semantic quality.
+
+The new dynamic AI performance tracking paradigm swaps static coverage for functional outcome verification. The entire process is orchestrated inside a GitHub Actions environment. A pull request triggers the reviewer script, which authenticates via Workload Identity Federation (WIF) and processes the golden assessments. The script outputs an aggregate pass rate percentage—the AI's current reliability score. To make sure everyone can see this metric, the pipeline updates a dynamic SVG badge that sits proudly on the repository's `README.md`.
+
+## The Actions Workflow
+
+To get this dynamic badging system running, I use a custom GitHub Actions workflow. The pipeline runs the reviewer, scrapes the pass rate, and uses an external badging service (like Shields.io) or a custom Gist to render the metric.
+
+Here is the GitHub Actions YAML snippet showing how the evaluation runs and the badge gets minted:
+
+```yaml
+name: AI Reliability Assessment
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  assess-and-badge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
+      - name: Run Golden Assessments
+        id: evaluate
+        run: |
+          uv run python orchestrator/evaluate_golden.py > result.txt
+          PASS_RATE=$(cat result.txt)
+          echo "pass_rate=$PASS_RATE" >> $GITHUB_OUTPUT
+
+      - name: Generate Dynamic Badge
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 1234567890abcdef1234567890abcdef
+          filename: ai-reliability.json
+          label: AI Assessment
+          message: ${{ steps.evaluate.outputs.pass_rate }}%
+          color: green
+          namedLogo: github
+```
+
+This setup extracts the performance metric and pushes it to a distinct file. The repository's `README.md` then points directly to the dynamically generated SVG URI, making sure the current reliability score is front and centre for anyone looking at the project:
+
+![AI Reliability Badge](https://img.shields.io/badge/AI_Assessment-85%25-green?logo=github)
+
+Because the badging pipeline is decoupled from the specific assessment logic, this architecture easily scales to support multiple performance badges. For example, instead of a single aggregate score, you can generate specific badges for different assessment vectors—such as a "500s Avoidance" badge, a "Context Retrieval Accuracy" badge, or a "Security Posture" badge—providing an immediate, granular dashboard of the agent's current capabilities.
+
+## Wrapping Up
+
+Dynamically measuring and badging performance against a golden set is a highly useful way to track the reliability of non-deterministic systems. It gives you an immediate visual indicator of agent health that acts as a modern alternative to traditional code coverage. By enforcing this check right at the CI layer, engineering teams can make sure performance drops are caught and blocked long before the flawed logic merges into the main branch.
+
+## References
+
+- [1] [Evaluating Large Language Models Trained on Code (Chen et al.)](https://arxiv.org/abs/2107.03374)
+- [2] [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [3] [Dynamic Badges Action](https://github.com/Schneegans/dynamic-badges-action)
+
+---
+*Transparency Note: This blog post was written and structured with the assistance of an AI agent (Gemini).*
