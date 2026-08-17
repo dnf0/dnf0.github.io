@@ -3,6 +3,8 @@ import TagChip from "@/components/TagChip";
 import Callout from "@/components/Callout";
 import CodeBlock from "@/components/CodeBlock";
 import MapEmbed from "@/components/MapEmbed";
+import EntropyVisualizer from "@/components/EntropyVisualizer";
+import CompressionPlayground from "@/components/CompressionPlayground";
 import { format, parseISO } from "date-fns";
 import type { Metadata } from "next";
 
@@ -42,6 +44,8 @@ export default async function BlogPost({ params }: Props) {
     Callout,
     CodeBlock,
     MapEmbed,
+    EntropyVisualizer,
+    CompressionPlayground,
   });
 
   return (
