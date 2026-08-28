@@ -1,0 +1,48 @@
+---
+title: "Kubelings"
+date: "2026-08-26"
+description: "An interactive, hands-on CLI learning environment for mastering Kubernetes from scratch through guided, test-driven exercises."
+tags: ["kubernetes", "devops", "python", "cli", "tui", "lings", "wasm"]
+---
+
+**Kubelings** is an interactive, test-driven terminal learning environment for mastering Kubernetes from the ground up. Inspired by [Rustlings](https://github.com/rust-lang/rustlings) and [Ziglings](https://codeberg.org/ziglings/exercises), Kubelings guides engineers through fixing broken YAML manifests, constructing multi-container sidecars, writing RBAC rules, authoring custom Python Kubernetes operators, and troubleshooting cluster incidents.
+
+### Pedagogical Philosophy
+
+Learning Kubernetes from static documentation or copy-pasted Helm charts is difficult because feedback loops are slow and failure messages are cryptic. Kubelings solves this through guided, test-driven micro-learning:
+
+1. **Active Debugging & Iteration**: Every exercise starts in a broken or incomplete state with clear `# TODO:` prompts. You inspect the failure and edit the code until it passes verification.
+2. **Sub-30ms Hotkey Watcher**: File changes are evaluated instantly. Single-key shortcuts (`n`, `p`, `h`, `r`, `q`) keep you in a continuous flow state.
+3. **Dual-Mode Execution (Offline & Live Cluster)**:
+   - *Offline Mode*: Zero cluster setup required. In-memory schema and behavioral validation.
+   - *Live Cluster Mode*: Connects to `kind`, `minikube`, or remote clusters with ephemeral test namespaces.
+4. **Progressive Hints**: Multi-tiered conceptual hints (`kubelings hint`) guide you without spoiling solutions.
+
+### Core Features & Developer Tooling
+
+- **Interactive Terminal Dashboard (`kubelings tui`)**: Split-pane interface for browsing chapters, previewing code, and evaluating manifests.
+- **⚡ In-Browser Playground**: 100% client-side WebAssembly environment powered by Pyodide and the Monaco Editor — no installation or cloud required.
+- **Resource Topology Visualizer (`kubelings tree`)**: Renders hierarchical ASCII trees of Kubernetes workloads, services, endpoints, volumes, and network policies.
+- **Universal Manifest Linter (`kubelings lint`)**: Audits manifests against security standards, reliability probes, and schema best practices.
+- **VS Code & Cursor Extension**: Dedicated Activity Bar curriculum explorer, live status bar progress, on-save schema diagnostics, and side-by-side reference solution diffing.
+
+### Curriculum Matrix (26 Chapters · 114 Exercises)
+
+- **01–06 Workloads & Networking**: Pods, multi-container sidecars, Deployments, StatefulSets, ConfigMaps, PV/PVC storage, ClusterIP/NodePort/LoadBalancer services, Ingress.
+- **07–10 Scheduling & Reliability**: Node affinity, taints/tolerations, topology spread, RBAC, NetworkPolicies, liveness/readiness/startup probes.
+- **11–18 Advanced Kubernetes**: HPA v2 autoscaling, Custom Resource Definitions (CRDs) & Python operators, incident troubleshooting, GitOps/ArgoCD, Cilium eBPF, Kyverno/Gatekeeper policy-as-code, multi-tenancy vcluster, mutating/validating webhooks.
+- **19–26 Enterprise & AI Infrastructure**: Helm v3, Kustomize overlays, Gateway API, Crossplane infrastructure-as-data, Tetragon eBPF security, KubeRay distributed clusters, Kueue/Volcano batch scheduling, and GPU Dynamic Resource Allocation (DRA).
+
+### Links & Resources
+
+- [GitHub Repository](https://github.com/dnf0/kubelings)
+- [⚡ Try in Browser (Playground)](https://dnf0.github.io/kubelings/playground/)
+
+---
+
+### The *lings Ecosystem
+
+Explore companion interactive learning environments in the `*lings` suite:
+- [Terralings](/projects/terralings) — Master Terraform and OpenTofu through interactive IaC exercises.
+- [Spanglings](/projects/spanglings) — Developer-grade CLI & TUI for learning Spanish (B1–C1).
+- [Raylings](/projects/raylings) — Learn distributed AI and Ray Core actors through hands-on Python exercises.
