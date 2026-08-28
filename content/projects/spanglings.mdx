@@ -1,0 +1,50 @@
+---
+title: "Spanglings"
+date: "2026-08-26"
+description: "Developer-grade CLI & interactive TUI for mastering Spanish grammar, verb mechanics, and nuanced syntactic architecture inspired by Rustlings."
+tags: ["rust", "tui", "ratatui", "lsp", "language-learning", "lings", "cli"]
+---
+
+**Spanglings** is a developer-grade CLI and interactive terminal learning environment designed for mastering intermediate-to-advanced Spanish (CEFR A1 through C1). Inspired by the hands-on pedagogy of [Rustlings](https://github.com/rust-lang/rustlings) and [Raylings](https://github.com/dnf0/raylings), it treats natural language acquisition like compiler construction: *Spanglings builds the syntax compiler; real-world usage supplies the data.*
+
+### Pedagogical Philosophy: The Syntax Compiler Model
+
+Most language platforms rely on gamified flashcards and repetitive multiple-choice matching that fail to build generative mental models. Natural languages are structural systems with strict morphological transformations, scope rules, and pragmatic contracts.
+
+Spanglings approaches Spanish through a compiler-driven architecture:
+
+1. **Active Debugging with Zero Busywork**: Every exercise starts in an incomplete or broken state. Modify code in your editor; the watcher validates submissions on save in < 20ms with zero manual comment-deletion.
+2. **Rustc-Style Grammar Diagnostics**: When you make an error (such as using indicative where subjunctive is mandated), Spanglings produces compiler-grade diagnostics (`error[E0301]: Subjunctive Mood Required`), pinpointing the exact offending token, underlying grammar concept, and contrast notes.
+3. **81-Concept Ontological Knowledge Graph (DAG)**: All 339 exercises are mapped onto an 81-concept Directed Acyclic Graph that dynamically computes your learning frontier and concept decay rates.
+4. **SM-2 Spaced Repetition**: Integrates SuperMemo-2 active recall scheduling to prioritize conceptual weak spots.
+5. **Dual-Interface Synergy**: Seamlessly alternate between a full-screen Ratatui TUI and a headless watcher + native Language Server Protocol engine (`spanglings lsp`).
+
+### Core Features & Terminal Workflow
+
+- **Interactive Full-Screen TUI (`spanglings` / `spanglings tui`)**: Dual-pane editor interface, live fuzzy search (`/`), progressive hint tiers (`Ctrl+H`), real-time verb conjugation lookups (`Ctrl+K`), and CEFR placement tests (`[p]`).
+- **Sub-20ms File Watcher (`spanglings watch`)**: Continuous background watcher with single-key controls (`n`, `p`, `r`, `h`, `c`, `q`).
+- **Language Server Protocol (`spanglings lsp`)**: Native LSP server providing hover explanations, grammar diagnostics, and completions in VS Code, Cursor, Neovim, and Helix.
+- **In-Terminal Grammar Explainers (`spanglings explain`)**: Instant cheat sheets for 24 core topics and error codes (`spanglings explain E0301`).
+
+### Curriculum Matrix (60 Tracks · 339 Exercises)
+
+- **A1 — Survival & Foundations** (Tracks 00–02, 18 exercises): Baseline irregulars, *ser vs estar*, present tense paradigms.
+- **A2 — Daily Routine & Aspect** (Tracks 03–11, 54 exercises): Preterite vs imperfect aspectual shifts, stem-changers, direct/indirect pronouns.
+- **B1 — The Independent Threshold** (Tracks 12–27, 96 exercises): Subjunctive triggers (WEIRDO), *por vs para*, clitic stacking (*se lo*), accidental *se*.
+- **B2 — Professional & Technical Fluency** (Tracks 28–41, 84 exercises): Software engineering collocations, business correspondence, hypothetical *si* clauses, passive *se*.
+- **C1 — Pragmatics & Advanced Discourse** (Tracks 42–59, 87 exercises): Epistemic conjecture, clitic doubling, personal *a*, gerund restrictions, and archaic/legal subjunctives.
+
+### Links & Resources
+
+- [GitHub Repository](https://github.com/dnf0/spanglings)
+- [Documentation Site](https://dnf0.github.io/spanglings/)
+- [Curriculum Syllabus](https://dnf0.github.io/spanglings/syllabus/)
+
+---
+
+### The *lings Ecosystem
+
+Explore companion interactive learning environments in the `*lings` suite:
+- [Kubelings](/projects/kubelings) — Hands-on interactive CLI learning environment for Kubernetes.
+- [Terralings](/projects/terralings) — Master Terraform and OpenTofu through interactive IaC exercises.
+- [Raylings](/projects/raylings) — Learn distributed AI and Ray Core actors through hands-on Python exercises.
