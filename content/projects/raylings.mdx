@@ -1,0 +1,47 @@
+---
+title: "Raylings"
+date: "2026-08-27"
+description: "An interactive, hands-on CLI learning environment for mastering Python Ray, distributed actors, and scalable AI clusters."
+tags: ["python", "ray", "distributed-systems", "ai", "tui", "lings", "kubernetes"]
+---
+
+**Raylings** is an interactive, hands-on CLI learning environment for mastering Python Ray from scratch. Inspired by the pedagogy of [Rustlings](https://github.com/rust-lang/rustlings) and [Ziglings](https://github.com/ziglings/exercises), Raylings guides engineers through progressively challenging distributed computing exercises: futures, stateful actors, Plasma zero-copy memory, dynamic placement groups, and lineage-based fault tolerance.
+
+### Pedagogical Philosophy
+
+Ray is a unified framework for scaling AI and Python applications from single laptops to massive multi-node clusters. Mastering Ray's mental models requires hands-on practice.
+
+Raylings provides:
+- **Sub-50ms Execution Loop**: A background daemon re-uses a warm local Ray cluster session for rapid turnaround.
+- **Active Distributed Debugging**: Fix broken distributed tasks, resolve actor bottlenecks, eliminate object store memory leaks, and configure multi-node placement groups.
+- **Layered Progressive Hints**: Conceptual hints guide your mental model before revealing concrete Ray API calls.
+
+### Core Features & Terminal Workflow
+
+- **Split-Pane Terminal UI (`raylings tui`)**: Browse chapters, preview syntax-highlighted code with line numbers, trigger instant runs (`[r]`), reveal hints (`[h]`), and toggle telemetry overlays (`[t]`).
+- **Cluster Health & Telemetry Inspector (`raylings top` / `raylings metrics`)**: Real-time dashboard monitoring Plasma object store memory, disk spill rates, CPU/GPU saturation, and active actor tables.
+- **Preflight Diagnostics (`raylings doctor`) & Guided Tour (`raylings tour`)**: 5-step interactive onboarding tour and environment health checks.
+- **Multi-Node Kubernetes & KubeRay Harness**: Ephemeral 3-node KinD cluster harness (`scripts/kuberay/`) for testing Ray clusters, remote client execution, and DDP training on real Kubernetes topologies.
+- **VS Code Extension**: Activity Bar exercise explorer, status bar progress, and on-save auto-evaluation.
+
+### Curriculum Matrix (14 Chapters · 66 Exercises)
+
+- **01–03 Core Foundations**: `ray.init()`, `@ray.remote` tasks, `ObjectRef` futures, parallel pipelines, `ray.wait()`, stateful actor classes, Plasma zero-copy memory, and disk spilling.
+- **04–07 Scheduling & Patterns**: Placement groups (`STRICT_SPREAD`, `STRICT_PACK`), gang scheduling, lineage reconstruction & fault tolerance, cluster architecture simulation, and nested `ray.get()` antipattern elimination.
+- **08–10 Data & Training**: Ray Datasets, `map_batches`, streaming backpressure, distributed parameter servers, ring all-reduce communication, and Ray Train PyTorch DDP (`TorchTrainer`).
+- **11–14 Production Scaling**: Ray Tune distributed HPO, Ray Serve multi-model DAGs, execution timelines (`ray timeline`), Prometheus observability, and KubeRay CRDs on Kubernetes.
+
+### Links & Resources
+
+- [GitHub Repository](https://github.com/dnf0/raylings)
+- [Documentation Site](https://dnf0.github.io/raylings/)
+- [Curriculum Syllabus](https://dnf0.github.io/raylings/syllabus/)
+
+---
+
+### The *lings Ecosystem
+
+Explore companion interactive learning environments in the `*lings` suite:
+- [Kubelings](/projects/kubelings) — Hands-on interactive CLI learning environment for Kubernetes.
+- [Terralings](/projects/terralings) — Master Terraform and OpenTofu through interactive IaC exercises.
+- [Spanglings](/projects/spanglings) — Developer-grade CLI & TUI for learning Spanish (B1–C1).
