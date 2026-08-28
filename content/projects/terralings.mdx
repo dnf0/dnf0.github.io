@@ -1,0 +1,48 @@
+---
+title: "Terralings"
+date: "2026-08-26"
+description: "An interactive terminal learning tool for mastering Terraform and OpenTofu through hands-on infrastructure-as-code exercises."
+tags: ["terraform", "opentofu", "go", "iac", "tui", "lings", "devops"]
+---
+
+**Terralings** is an ultra-fast, interactive terminal learning tool for mastering Terraform and OpenTofu from scratch. Inspired by [Rustlings](https://github.com/rust-lang/rustlings), [Spanglings](https://github.com/dnf0/spanglings), and [Raylings](https://github.com/dnf0/raylings), it guides engineers through fixing broken configurations, writing declarative Infrastructure as Code (IaC), mastering HCL functions, refactoring state with `moved` blocks, authoring `.tftest.hcl` tests, and configuring OpenTofu state encryption.
+
+### Pedagogical Philosophy
+
+Terralings is built on five core educational pillars:
+
+1. **Active Debugging over Passive Reading**: Each exercise presents realistic broken or incomplete HCL code with clear `# TODO:` instructions. You learn by diagnosing plan discrepancies and fixing syntax errors.
+2. **Sub-30ms Hotkey Watcher Loop**: Powered by an ultra-fast Go file watcher (`fsnotify`), Terralings re-evaluates configurations immediately upon saving.
+3. **Dual Engine Support**: Auto-detects and runs natively against both **OpenTofu** (`tofu` ≥ 1.6.0) and **Terraform** (`terraform` ≥ 1.5.0).
+4. **Progressive Hinting**: Multi-level contextual hints provide conceptual nudges before revealing syntax patterns.
+5. **Zero Cloud Credentials Required**: Completely self-contained offline validation without requiring AWS, GCP, or Azure credentials.
+
+### Architecture & Capabilities
+
+- **High-Performance Go Binary**: The entire 56-exercise curriculum is embedded directly into a standalone binary with zero runtime dependencies.
+- **Bubble Tea & Lip Gloss TUI (`terralings tui`)**: Full-screen split-pane terminal dashboard featuring live curriculum trees, syntax diagnostics, and hint drawers.
+- **Embedded Language Server (`terralings lsp`)**: Standards-compliant JSON-RPC 2.0 LSP daemon providing real-time diagnostics, hover documentation, and hint code actions in VS Code, Neovim, and Helix.
+- **Pre-flight Health Diagnostics (`terralings doctor`)**: Validates local OpenTofu/Terraform binaries, provider plugin caches, and progress store integrity.
+- **Official VS Code Companion Extension**: Activity bar curriculum explorer, on-save HCL evaluation, and 5-step guided walkthroughs.
+
+### Curriculum Matrix (13 Chapters · 56 Exercises)
+
+- **01–04 Foundations**: Primitives, variables, structural types, outputs, locals, ternary conditionals, splat expressions, string/collection functions, filesystem operations.
+- **05–07 Meta-Arguments & Modularity**: `count`, `for_each`, lifecycle rules (`create_before_destroy`, `prevent_destroy`), dynamic blocks, local/archive data sources, preconditions and postconditions.
+- **08–10 Advanced IaC**: Child module boundaries, provider aliasing, declarative state refactoring (`moved` blocks, `import` blocks), native testing framework (`.tftest.hcl`, mock providers).
+- **11–13 Governance & OpenTofu**: Tagging factory patterns, OpenTofu state encryption at rest, early variable evaluation, root module encapsulation, and ADR-0005 policy encapsulation.
+
+### Links & Resources
+
+- [GitHub Repository](https://github.com/dnf0/terralings)
+- [Documentation Site](https://dnf0.github.io/terralings/)
+- [Onboarding & Learner's Guide](https://dnf0.github.io/terralings/onboarding-guide/)
+
+---
+
+### The *lings Ecosystem
+
+Explore companion interactive learning environments in the `*lings` suite:
+- [Kubelings](/projects/kubelings) — Hands-on interactive CLI learning environment for Kubernetes.
+- [Spanglings](/projects/spanglings) — Developer-grade CLI & TUI for learning Spanish (B1–C1).
+- [Raylings](/projects/raylings) — Learn distributed AI and Ray Core actors through hands-on Python exercises.
