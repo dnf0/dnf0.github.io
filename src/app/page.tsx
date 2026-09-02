@@ -136,51 +136,55 @@ export default function Home() {
             </div>
           </a>
 
-          <Link
-            href="/projects/spanglings"
-            className="group block p-5 rounded-xl border border-stone-200 bg-stone-50/50 hover:bg-stone-50 hover:border-topo-accent/40 transition-all"
+          <a
+            href="https://dnf0.github.io/terralings/playground/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block p-5 rounded-xl border border-stone-200 bg-topo-sand/40 hover:bg-topo-sand/80 hover:border-topo-accent/40 transition-all"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-topo-muted bg-stone-200/60 px-2 py-0.5 rounded">
-                CLI, TUI &amp; Syllabus
+              <span className="text-xs font-semibold uppercase tracking-wider text-topo-accent bg-amber-100/60 px-2 py-0.5 rounded">
+                Wasm IDE · 15 Chapters · 68 Exercises
               </span>
               <span className="text-xs text-topo-muted group-hover:text-topo-accent transition-colors">
-                View →
+                Launch ↗
               </span>
             </div>
             <h3 className="font-semibold text-topo-slate text-base group-hover:text-topo-accent transition-colors mb-1">
-              📖 Spanglings Reference &amp; CLI
+              🌍 Terralings Playground
             </h3>
             <p className="text-xs text-topo-muted leading-relaxed mb-3">
-              Developer-grade syntax compiler model, CEFR A1–C1 syllabus breakdown, 81-concept DAG, Ratatui TUI, and LSP integration.
+              Full client-side Terraform &amp; OpenTofu IDE powered by Pyodide WebAssembly, Monaco Editor, in-browser AST evaluation, and interactive terminal.
             </p>
             <div className="flex items-center gap-1 text-xs text-topo-accent font-medium">
-              <span>Explore Spanglings Architecture →</span>
+              <span>Launch Playground →</span>
             </div>
-          </Link>
+          </a>
 
-          <Link
-            href="/projects/kubelings"
-            className="group block p-5 rounded-xl border border-stone-200 bg-stone-50/50 hover:bg-stone-50 hover:border-topo-accent/40 transition-all"
+          <a
+            href="https://dnf0.github.io/raylings/playground/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block p-5 rounded-xl border border-stone-200 bg-topo-sand/40 hover:bg-topo-sand/80 hover:border-topo-accent/40 transition-all"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-topo-muted bg-stone-200/60 px-2 py-0.5 rounded">
-                Reference Manual
+              <span className="text-xs font-semibold uppercase tracking-wider text-topo-accent bg-amber-100/60 px-2 py-0.5 rounded">
+                Wasm IDE · 14 Chapters · 66 Exercises
               </span>
               <span className="text-xs text-topo-muted group-hover:text-topo-accent transition-colors">
-                View →
+                Launch ↗
               </span>
             </div>
             <h3 className="font-semibold text-topo-slate text-base group-hover:text-topo-accent transition-colors mb-1">
-              📚 26-Chapter Kubernetes Guide
+              ⚡ Raylings Playground
             </h3>
             <p className="text-xs text-topo-muted leading-relaxed mb-3">
-              In-depth architectural reference manuals, annotated YAML specs, production triage workflows, and linked interactive exercises.
+              Full client-side distributed computing &amp; Ray IDE powered by Pyodide WebAssembly, Monaco Editor, distributed task simulation, and live terminal.
             </p>
             <div className="flex items-center gap-1 text-xs text-topo-accent font-medium">
-              <span>Explore Guide &amp; Details →</span>
+              <span>Launch Playground →</span>
             </div>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
