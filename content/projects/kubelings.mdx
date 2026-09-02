@@ -1,8 +1,8 @@
 ---
 title: "Kubelings"
 date: "2026-08-26"
-description: "An interactive, hands-on CLI learning environment for mastering Kubernetes from scratch through guided, test-driven exercises."
-tags: ["kubernetes", "devops", "python", "cli", "tui", "lings", "wasm"]
+description: "A 100% client-side WebAssembly learning platform and comprehensive 26-chapter reference manual for Kubernetes."
+tags: ["kubernetes", "devops", "python", "wasm", "pyodide", "monaco", "lings"]
 ---
 
 <Callout>
@@ -11,38 +11,35 @@ tags: ["kubernetes", "devops", "python", "cli", "tui", "lings", "wasm"]
 👉 [**Launch WebAssembly Playground (114 Exercises) →**](https://dnf0.github.io/kubelings/playground/)
 </Callout>
 
-**Kubelings** is an interactive, test-driven terminal learning environment for mastering Kubernetes from the ground up. Inspired by [Rustlings](https://github.com/rust-lang/rustlings) and [Ziglings](https://codeberg.org/ziglings/exercises), Kubelings guides engineers through fixing broken YAML manifests, constructing multi-container sidecars, writing RBAC rules, authoring custom Python Kubernetes operators, and troubleshooting cluster incidents.
+**Kubelings** is a client-side WebAssembly interactive learning platform and comprehensive reference manual for mastering Kubernetes from the ground up. Inspired by the pedagogical philosophy of [Rustlings](https://github.com/rust-lang/rustlings) and [Ziglings](https://codeberg.org/ziglings/exercises), Kubelings guides engineers through fixing broken declarative YAML manifests, constructing multi-container sidecars, writing RBAC authorization rules, configuring Gateway API routes, orchestrating distributed AI workloads with KubeRay, and troubleshooting cluster incidents.
 
 ### Pedagogical Philosophy
 
 Learning Kubernetes from static documentation or copy-pasted Helm charts is difficult because feedback loops are slow and failure messages are cryptic. Kubelings solves this through guided, test-driven micro-learning:
 
-1. **Active Debugging & Iteration**: Every exercise starts in a broken or incomplete state with clear `# TODO:` prompts. You inspect the failure and edit the code until it passes verification.
-2. **Sub-30ms Hotkey Watcher**: File changes are evaluated instantly. Single-key shortcuts (`n`, `p`, `h`, `r`, `q`) keep you in a continuous flow state.
-3. **Dual-Mode Execution (Offline & Live Cluster)**:
-   - *Offline Mode*: Zero cluster setup required. In-memory schema and behavioral validation.
-   - *Live Cluster Mode*: Connects to `kind`, `minikube`, or remote clusters with ephemeral test namespaces.
-4. **Progressive Hints**: Multi-tiered conceptual hints (`kubelings hint`) guide you without spoiling solutions.
+1. **Active Debugging & Iteration**: Every exercise starts in a broken or incomplete state with clear `# TODO:` prompts. You inspect the failure and edit the code until it passes schema and behavioral verification.
+2. **Instant WebAssembly Feedback Loop**: Manifest changes are evaluated in `< 1ms` inside a background Web Worker running Python 3.12 and PyYAML via WebAssembly.
+3. **Zero Installation**: Practice anywhere with zero prerequisite tools—no Docker daemon, no minikube, and no cloud accounts needed.
+4. **Progressive Hints & Solutions**: Multi-tiered conceptual hints guide your mental model before revealing concrete YAML syntax solutions.
 
-### Core Features & Developer Tooling
+### Core Features & Architecture
 
-- **⚡ Full In-Browser Learning Platform**: Complete 114-exercise WebAssembly curriculum powered by Pyodide, Monaco Editor, side-by-side diffing, progressive hinting, and `localStorage` progress tracking with JSON backup import/export.
-- **Interactive Terminal Dashboard (`kubelings tui`)**: Split-pane interface for browsing chapters, previewing code, and evaluating manifests.
-- **Resource Topology Visualizer (`kubelings tree`)**: Renders hierarchical ASCII trees of Kubernetes workloads, services, endpoints, volumes, and network policies.
-- **Universal Manifest Linter (`kubelings lint`)**: Audits manifests against security standards, reliability probes, and schema best practices.
-- **VS Code & Cursor Extension**: Dedicated Activity Bar curriculum explorer, live status bar progress, on-save schema diagnostics, and side-by-side reference solution diffing.
+- **⚡ Zero-Install Wasm IDE**: Complete 114-exercise WebAssembly curriculum powered by Pyodide, Monaco Editor, side-by-side solution diffing, progressive hinting, and `localStorage` progress tracking with JSON backup import/export.
+- **🔗 Deep Linking & Instant Sharing**: Full URL query-param routing (`?exercise=<id>` and `?chapter=<num>`) with live browser history synchronization.
+- **📚 26 Architectural Reference Guides**: In-depth documentation covering Kubernetes internals, annotated manifest anatomies, production hardening advice, and troubleshooting triage trees.
+- **VS Code Extension**: Dedicated Activity Bar curriculum explorer, status bar progress, on-save schema diagnostics, and side-by-side reference solution diffing.
 
 ### Curriculum Matrix (26 Chapters · 114 Exercises)
 
-- **01–06 Workloads & Networking**: Pods, multi-container sidecars, Deployments, StatefulSets, ConfigMaps, PV/PVC storage, ClusterIP/NodePort/LoadBalancer services, Ingress.
-- **07–10 Scheduling & Reliability**: Node affinity, taints/tolerations, topology spread, RBAC, NetworkPolicies, liveness/readiness/startup probes.
+- **01–06 Workloads, Config & Storage**: Pods, multi-container sidecars, Deployments, StatefulSets, ConfigMaps, Secrets, PV/PVC storage, ClusterIP/NodePort/LoadBalancer services, Ingress controllers.
+- **07–10 Scheduling & Reliability**: Node affinity, taints/tolerations, topology spread, RBAC authorization, NetworkPolicies, liveness/readiness/startup probes.
 - **11–18 Advanced Kubernetes**: HPA v2 autoscaling, Custom Resource Definitions (CRDs) & Python operators, incident troubleshooting, GitOps/ArgoCD, Cilium eBPF, Kyverno/Gatekeeper policy-as-code, multi-tenancy vcluster, mutating/validating webhooks.
-- **19–26 Enterprise & AI Infrastructure**: Helm v3, Kustomize overlays, Gateway API, Crossplane infrastructure-as-data, Tetragon eBPF security, KubeRay distributed clusters, Kueue/Volcano batch scheduling, and GPU Dynamic Resource Allocation (DRA).
+- **19–26 Modern Cloud-Native & AI Infrastructure**: Helm v3, Kustomize overlays, Gateway API, Crossplane infrastructure-as-data, Tetragon eBPF security, KubeRay distributed clusters, Kueue/Volcano batch scheduling, and GPU Dynamic Resource Allocation (DRA).
 
 ### Links & Resources
 
-- [⚡ Interactive WebAssembly Playground](https://dnf0.github.io/kubelings/playground/)
-- [Documentation Site](https://dnf0.github.io/kubelings/)
+- [⚡ Launch WebAssembly Playground](https://dnf0.github.io/kubelings/playground/)
+- [📖 26-Chapter Reference Manual](https://dnf0.github.io/kubelings/)
 - [Curriculum Syllabus](https://dnf0.github.io/kubelings/syllabus/)
 - [GitHub Repository](https://github.com/dnf0/kubelings)
 

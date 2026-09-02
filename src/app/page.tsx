@@ -71,6 +71,70 @@ export default function Home() {
           )}
         </div>
       </div>
+
+      {/* Interactive Playgrounds Section */}
+      <div className="mt-16 pt-12 border-t border-stone-200">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-lg font-bold text-topo-slate">
+              ⚡ Interactive Playgrounds &amp; Learning Tools
+            </h2>
+            <p className="text-sm text-topo-muted">
+              Zero-install, browser-based WebAssembly learning environments and interactive tools.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-4">
+          <a
+            href="https://dnf0.github.io/kubelings/playground/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block p-5 rounded-xl border border-stone-200 bg-topo-sand/40 hover:bg-topo-sand/80 hover:border-topo-accent/40 transition-all"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-topo-accent bg-amber-100/60 px-2 py-0.5 rounded">
+                Wasm IDE · 114 Exercises
+              </span>
+              <span className="text-xs text-topo-muted group-hover:text-topo-accent transition-colors">
+                Launch ↗
+              </span>
+            </div>
+            <h3 className="font-semibold text-topo-slate text-base group-hover:text-topo-accent transition-colors mb-1">
+              ☸️ Kubelings Playground
+            </h3>
+            <p className="text-xs text-topo-muted leading-relaxed mb-3">
+              Full client-side Kubernetes IDE powered by Pyodide (Python 3.12 Wasm) and Monaco Editor with real-time schema validation and test runner.
+            </p>
+            <div className="flex items-center gap-1 text-xs text-topo-accent font-medium">
+              <span>Launch Playground →</span>
+            </div>
+          </a>
+
+          <Link
+            href="/projects/kubelings"
+            className="group block p-5 rounded-xl border border-stone-200 bg-stone-50/50 hover:bg-stone-50 hover:border-topo-accent/40 transition-all"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-topo-muted bg-stone-200/60 px-2 py-0.5 rounded">
+                Reference Manual
+              </span>
+              <span className="text-xs text-topo-muted group-hover:text-topo-accent transition-colors">
+                View →
+              </span>
+            </div>
+            <h3 className="font-semibold text-topo-slate text-base group-hover:text-topo-accent transition-colors mb-1">
+              📚 26-Chapter Kubernetes Guide
+            </h3>
+            <p className="text-xs text-topo-muted leading-relaxed mb-3">
+              In-depth architectural reference manuals, annotated YAML specs, production triage workflows, and linked interactive exercises.
+            </p>
+            <div className="flex items-center gap-1 text-xs text-topo-accent font-medium">
+              <span>Explore Guide &amp; Details →</span>
+            </div>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
