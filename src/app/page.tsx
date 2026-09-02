@@ -87,6 +87,31 @@ export default function Home() {
 
         <div className="grid sm:grid-cols-2 gap-4">
           <a
+            href="https://dnf0.github.io/spanglings/playground/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block p-5 rounded-xl border border-stone-200 bg-topo-sand/40 hover:bg-topo-sand/80 hover:border-topo-accent/40 transition-all"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-topo-accent bg-amber-100/60 px-2 py-0.5 rounded">
+                Rust Wasm · 24 Topics · 136 Frames
+              </span>
+              <span className="text-xs text-topo-muted group-hover:text-topo-accent transition-colors">
+                Launch ↗
+              </span>
+            </div>
+            <h3 className="font-semibold text-topo-slate text-base group-hover:text-topo-accent transition-colors mb-1">
+              🇪🇸 Spanglings Playground &amp; Arcade
+            </h3>
+            <p className="text-xs text-topo-muted leading-relaxed mb-3">
+              Full client-side Spanish learning environment powered by Rust WebAssembly, Monaco Editor, dual-layer communicative/grammar models, and rapid showdown arcade.
+            </p>
+            <div className="flex items-center gap-1 text-xs text-topo-accent font-medium">
+              <span>Launch Playground &amp; Arcade →</span>
+            </div>
+          </a>
+
+          <a
             href="https://dnf0.github.io/kubelings/playground/"
             target="_blank"
             rel="noopener noreferrer"
@@ -110,6 +135,29 @@ export default function Home() {
               <span>Launch Playground →</span>
             </div>
           </a>
+
+          <Link
+            href="/projects/spanglings"
+            className="group block p-5 rounded-xl border border-stone-200 bg-stone-50/50 hover:bg-stone-50 hover:border-topo-accent/40 transition-all"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-topo-muted bg-stone-200/60 px-2 py-0.5 rounded">
+                CLI, TUI &amp; Syllabus
+              </span>
+              <span className="text-xs text-topo-muted group-hover:text-topo-accent transition-colors">
+                View →
+              </span>
+            </div>
+            <h3 className="font-semibold text-topo-slate text-base group-hover:text-topo-accent transition-colors mb-1">
+              📖 Spanglings Reference &amp; CLI
+            </h3>
+            <p className="text-xs text-topo-muted leading-relaxed mb-3">
+              Developer-grade syntax compiler model, CEFR A1–C1 syllabus breakdown, 81-concept DAG, Ratatui TUI, and LSP integration.
+            </p>
+            <div className="flex items-center gap-1 text-xs text-topo-accent font-medium">
+              <span>Explore Spanglings Architecture →</span>
+            </div>
+          </Link>
 
           <Link
             href="/projects/kubelings"
