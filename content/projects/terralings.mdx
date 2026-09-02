@@ -5,7 +5,13 @@ description: "An interactive terminal learning tool for mastering Terraform and 
 tags: ["terraform", "opentofu", "go", "iac", "tui", "lings", "devops"]
 ---
 
-**Terralings** is an ultra-fast, interactive terminal learning tool for mastering Terraform and OpenTofu from scratch. Inspired by [Rustlings](https://github.com/rust-lang/rustlings), [Spanglings](https://github.com/dnf0/spanglings), and [Raylings](https://github.com/dnf0/raylings), it guides engineers through fixing broken configurations, writing declarative Infrastructure as Code (IaC), mastering HCL functions, refactoring state with `moved` blocks, authoring `.tftest.hcl` tests, and configuring OpenTofu state encryption.
+<Callout>
+⚡ **In-Browser WebAssembly Learning Platform**: Practice all 68 exercises across 15 chapters directly in your browser with zero installation—powered by Pyodide (Python 3.12 Wasm), Monaco Editor, AST evaluation, and local progress persistence.
+
+👉 [**Launch WebAssembly Playground (15 Chapters · 68 Exercises) →**](https://dnf0.github.io/terralings/playground/)
+</Callout>
+
+**Terralings** is an ultra-fast, interactive terminal learning tool for mastering Terraform and OpenTofu from scratch. Inspired by [Rustlings](https://github.com/rust-lang/rustlings), [Spanglings](https://github.com/dnf0/spanglings), and [Raylings](https://github.com/dnf0/raylings), it guides engineers through fixing broken configurations, writing declarative Infrastructure as Code (IaC), mastering HCL functions, refactoring state with `moved` blocks, authoring `.tftest.hcl` tests, configuring OpenTofu state encryption, and building multi-cloud AWS & GCP architecture blueprints.
 
 ### Pedagogical Philosophy
 
@@ -19,21 +25,23 @@ Terralings is built on five core educational pillars:
 
 ### Architecture & Capabilities
 
-- **High-Performance Go Binary**: The entire 56-exercise curriculum is embedded directly into a standalone binary with zero runtime dependencies.
+- **High-Performance Go Binary**: The entire 68-exercise curriculum is embedded directly into a standalone binary with zero runtime dependencies.
 - **Bubble Tea & Lip Gloss TUI (`terralings tui`)**: Full-screen split-pane terminal dashboard featuring live curriculum trees, syntax diagnostics, and hint drawers.
 - **Embedded Language Server (`terralings lsp`)**: Standards-compliant JSON-RPC 2.0 LSP daemon providing real-time diagnostics, hover documentation, and hint code actions in VS Code, Neovim, and Helix.
 - **Pre-flight Health Diagnostics (`terralings doctor`)**: Validates local OpenTofu/Terraform binaries, provider plugin caches, and progress store integrity.
 - **Official VS Code Companion Extension**: Activity bar curriculum explorer, on-save HCL evaluation, and 5-step guided walkthroughs.
 
-### Curriculum Matrix (13 Chapters · 56 Exercises)
+### Curriculum Matrix (15 Chapters · 68 Exercises)
 
 - **01–04 Foundations**: Primitives, variables, structural types, outputs, locals, ternary conditionals, splat expressions, string/collection functions, filesystem operations.
 - **05–07 Meta-Arguments & Modularity**: `count`, `for_each`, lifecycle rules (`create_before_destroy`, `prevent_destroy`), dynamic blocks, local/archive data sources, preconditions and postconditions.
 - **08–10 Advanced IaC**: Child module boundaries, provider aliasing, declarative state refactoring (`moved` blocks, `import` blocks), native testing framework (`.tftest.hcl`, mock providers).
 - **11–13 Governance & OpenTofu**: Tagging factory patterns, OpenTofu state encryption at rest, early variable evaluation, root module encapsulation, and ADR-0005 policy encapsulation.
+- **14–15 Cloud Architecture Blueprints**: AWS multi-AZ VPC networking, resilient compute, serverless pipelines, SNS/SQS async decoupling, zero-trust IAM, and GCP custom VPCs, regional MIGs, Cloud Run, Pub/Sub, and Workload Identity federation.
 
 ### Links & Resources
 
+- [⚡ Launch WebAssembly Playground](https://dnf0.github.io/terralings/playground/)
 - [GitHub Repository](https://github.com/dnf0/terralings)
 - [Documentation Site](https://dnf0.github.io/terralings/)
 - [Onboarding & Learner's Guide](https://dnf0.github.io/terralings/onboarding-guide/)
